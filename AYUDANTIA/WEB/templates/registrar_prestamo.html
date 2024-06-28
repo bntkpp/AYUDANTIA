@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Préstamo</title>
+</head>
+<body>
+    <h2>Registrar Préstamo</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Aceptar</button>
+    </form>
+    
+    {% if monto_pagar %}
+        <h3>Detalles del Préstamo</h3>
+        <p>Monto del Préstamo con Interés: {{ monto_pagar }}</p>
+        <h4>Cuotas</h4>
+        <ul>
+            {% for cuota in cuotas %}
+                <li>Cuota {{ forloop.counter }}: {{ cuota.monto_cuota }} (Vencimiento: {{ cuota.cuota_fecha_vencimiento }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

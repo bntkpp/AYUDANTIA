@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Préstamos</title>
+</head>
+<body>
+    <h2>Listado de Préstamos</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RUT</th>
+                <th>Monto del Préstamo</th>
+                <th>Cantidad de Cuotas</th>
+                <th>Monto a Pagar</th>
+                <th>Tipo de Préstamo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamo %}
+            <tr>
+                <td>{{ prestamo.id_prestamo }}</td>
+                <td>{{ prestamo.rut }}</td>
+                <td>{{ prestamo.monto_prestamo }}</td>
+                <td>{{ prestamo.cantidad_cuotas }}</td>
+                <td>{{ prestamo.monto_pagar }}</td>
+                <td>{{ prestamo.id_tipo_prestamo.nombre_tipo_prestamo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
