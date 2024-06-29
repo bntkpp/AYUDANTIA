@@ -4,11 +4,17 @@ class Empleado(models.Model):
     rut = models.CharField(max_length = 20, primary_key = True)
     nombre = models.CharField(max_length = 50)
     direccion = models.CharField(max_length = 50)
+
+    def __str__(self):
+        return self.rut
     
 class TipoPrestamo(models.Model):
     id_tipo_prestamo = models.AutoField(primary_key = True)
     nombre_tipo_prestamo = models.CharField(max_length = 50)
     tasa_interes = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre_tipo_prestamo
 
     def calcular_monto_con_interes(self, monto):
         return monto + (monto * self.tasa_interes / 100)

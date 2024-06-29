@@ -1,7 +1,27 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Prestamo, Cuota, TipoPrestamo
-from .forms import PrestamoForms
+from django.shortcuts import render, redirect
+from .models import Prestamo, Cuota, TipoPrestamo, Empleado
+from .forms import PrestamoForms, EmpleadoForms, TipoPrestamoForms
 from datetime import datetime, timedelta
+
+def registrar_empleado(request):
+    if request.method == "POST":
+        form = EmpleadoForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_prestamo')
+    else:
+        form = EmpleadoForms()
+    return render(request, 'registrar_empleado.html', {'form': form})
+
+def registrar_tipo_prestamo(request):
+    if request.method == "POST":
+        form = TipoPrestamoForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_prestamo')
+    else:
+        form = TipoPrestamoForms()
+    return render(request, 'registrar_tipo_prestamo.html', {'form': form})
 
 def registrar_prestamo(request):
     if request.method == "POST":
@@ -36,3 +56,5 @@ def registrar_prestamo(request):
 def listar_prestamo(request):
     prestamo = Prestamo.objects.all()
     return render(request, 'listar_prestamo.html', {'prestamo': prestamo})
+
+

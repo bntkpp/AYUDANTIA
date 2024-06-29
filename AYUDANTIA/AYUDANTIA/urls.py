@@ -20,6 +20,8 @@ from WEB import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.registrar_prestamo, name = 'registrar_empleado'),
+    path('', views.registrar_prestamo, name = 'registrar_prestamo'),
+    path('registrar_empleado', views.registrar_empleado, name = 'registrar_empleado'),
+    path('registrar_tipo_prestamo', views.registrar_tipo_prestamo, name = 'registrar_tipo_prestamo'),
     path('listar_prestamo', views.listar_prestamo, name = 'listar_prestamos'),
 ]
