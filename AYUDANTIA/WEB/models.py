@@ -25,7 +25,7 @@ class Prestamo(models.Model):
     cantidad_cuotas = models.IntegerField()
     monto_pagar = models.IntegerField()
     rut = models.ForeignKey(Empleado, on_delete=models.CASCADE)
-    id_tipo_prestamo = models.ForeignKey(TipoPrestamo, on_delete=models.CASCADE)
+    tipo_prestamo = models.ForeignKey(TipoPrestamo, on_delete=models.CASCADE)
 
 
 class Cuota(models.Model):

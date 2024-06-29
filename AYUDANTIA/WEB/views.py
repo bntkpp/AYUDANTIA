@@ -28,7 +28,7 @@ def registrar_prestamo(request):
         form = PrestamoForms(request.POST)
         if form.is_valid():
             prestamo = form.save(commit=False)
-            tipo_prestamo = prestamo.id_tipo_prestamo
+            tipo_prestamo = prestamo.tipo_prestamo
             prestamo.monto_pagar = tipo_prestamo.calcular_monto_con_interes(prestamo.monto_prestamo)
             prestamo.save()
 

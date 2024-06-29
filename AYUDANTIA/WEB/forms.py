@@ -6,6 +6,11 @@ class EmpleadoForms(forms.ModelForm):
         model = Empleado
         fields = ['rut', 'nombre', 'direccion']
 
+class TipoPrestamoForms(forms.ModelForm):
+    class Meta:
+        model = TipoPrestamo
+        fields = ['nombre_tipo_prestamo', 'tasa_interes']
+
 class PrestamoForms(forms.ModelForm):
     tipo_prestamo = forms.ModelChoiceField(queryset = TipoPrestamo.objects.all(), empty_label = 'Seleccione un Tipo de Prestamo')
     rut = forms.ModelChoiceField(queryset = Empleado.objects.all(), empty_label = 'Seleccione un Rut')
